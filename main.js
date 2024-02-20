@@ -1,6 +1,9 @@
 const input_01 = document.getElementById('input_01');
 const box_01 = document.getElementById('box_01');
-let tamanho = 'a';
+
+var body = document.body,
+    html = document.documentElement;
+    height = body.scrollHeight;
 
 function mostraNaTela() {
     alert(input_01.value);
@@ -21,7 +24,7 @@ function mudaCorDeFundo() {
     } else if(value === "Orange" || value === "orange" || value === "laranja" || value === "Laranja"){
         fundo.style.background = "orange";
     } else if(value === "Brown" || value === "brown" || value === "Marrom" || value === "marrom"){
-        fundo.style.background = "brown";
+        fundo.style.background = "saddlebrown";
     } else if(value === "Purple" || value === "purple" || value === "roxo" || value === "Roxo"){
         fundo.style.background = "purple";
     } else if(value === "Pink" || value === "pink" || value === "Rosa" || value === "rosa"){
@@ -41,6 +44,7 @@ function mudaCorDeFundo() {
     
 }
 
+
 function mudaCorCaixa() {
     let value = input_01.value;
     let caixa = document.getElementById("box_01");
@@ -56,7 +60,7 @@ function mudaCorCaixa() {
     } else if(value === "Orange" || value === "orange" || value === "laranja" || value === "Laranja"){
         caixa.style.background = "orange";
     } else if(value === "Brown" || value === "brown" || value === "Marrom" || value === "marrom"){
-        caixa.style.background = "brown";
+        caixa.style.background = "saddlebrown";
     } else if(value === "Purple" || value === "purple" || value === "roxo" || value === "Roxo"){
         caixa.style.background = "purple";
     } else if(value === "Pink" || value === "pink" || value === "Rosa" || value === "rosa"){
@@ -86,7 +90,7 @@ function adicionaPalavraRandom() {
     let isColorido = palavras[randomNum] === 'colorido';
     let fundo = document.body;
 
-    input_01.value += palavras[randomNum];
+    input_01.value += palavras[randomNum]+' ';
 
     if(isColorido) {
         fundo.style.background = "linear-gradient(90deg,rgba(255, 0, 0, 1) 0%,rgba(255, 154, 0, 1) 10%,rgba(208, 222, 33, 1) 20%,rgba(79, 220, 74, 1) 30%,rgba(63, 218, 216, 1) 40%, rgba(47, 201, 226, 1) 50%, rgba(28, 127, 238, 1) 60%,rgba(95, 21, 242, 1) 70%,rgba(186, 12, 248, 1) 80%,rgba(251, 7, 217, 1) 90%,rgba(255, 0, 0, 1) 100%)";
@@ -94,8 +98,8 @@ function adicionaPalavraRandom() {
 }
 
 function mudaTamanhoBox(tamanho) {
-    
-    switch(tamanho) {
+
+    switch(tamanho.value) {
         case 'grande':
             box_01.classList.remove('normal');
             box_01.classList.remove('pequeno');
@@ -104,6 +108,7 @@ function mudaTamanhoBox(tamanho) {
             setInterval(() => {
                 box_01.style.transition = "0s";
             }, 2000);
+            /* console.log(tamanho) */
         break;
         case 'normal':
             box_01.classList.remove('pequeno');
@@ -129,12 +134,20 @@ function mudaTamanhoBox(tamanho) {
 
 }
 
-dragElement(document.getElementById('mydiv'));
+function showWindowSize() {
+    console.log(height)
+}
+
 dragElement(box_01);
 
+function call_reset_box_position() {
+    dragElement(box_01)(pos1, pos2, pos3, pos4)
+}
+
 function dragElement(elmnt) {
-  elmnt.style.transition = '0s';
+
   var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+  
   if (document.getElementById(elmnt.id + "drag")) {
     /* if present, the header is where you move the DIV from:*/
     document.getElementById(elmnt.id + "drag").onmousedown = dragMouseDown;
@@ -172,4 +185,7 @@ function dragElement(elmnt) {
     document.onmouseup = null;
     document.onmousemove = null;
   }
+
+
+
 }
