@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>DOM Manipulation</title>
+</head>
+<body>
+    <section id="box_01" class="box normal">
+        <label>
+            <span>Digite seu texto:</span>
+            <input type="text" id="input_01" value="" />
+        </label>
+        <div class="buttons">
+
+            <div class="buttons_row">
+                <input class=button type="button" value="Mudar cor de fundo" onclick="mudaCorDeFundo()" />
+                <input class=button type="button" value="Mudar cor da caixa" onclick="mudaCorCaixa()" />
+            </div>
+            <div class="buttons_row">
+                <input class="button" type="button" value="Mostrar na tela" onclick="mostraNaTela()" />
+                <input  class=button type="button" value="Apagar texto" onclick="apagaTextoBox()" />
+            </div>
+            <div id="rowButtonChangeSize" class="buttons_row">
+                <input class="button" type="button" value="Palavra aleatoria" onclick="adicionaPalavraRandom()" />
+                <select class=button id="sizesDropdownList">
+                    <option class="button" onclick="mudaTamanhoBox('grande')">Grande</option>
+                    <option selected class="button" onclick="mudaTamanhoBox('normal')">Normal</option>
+                    <option class="button" onclick="mudaTamanhoBox('pequeno')">Pequeno</option>
+                </select>
+            </div>
+            
+        </div>
+       
+    </section>
+
+    <script src="main.js"></script>
+</body>
+</html>
